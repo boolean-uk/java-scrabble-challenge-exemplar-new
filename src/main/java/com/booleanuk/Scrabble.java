@@ -19,6 +19,6 @@ public class Scrabble {
             total += score;
         }
 
-        return 19;
+        return total;
     }
 }
