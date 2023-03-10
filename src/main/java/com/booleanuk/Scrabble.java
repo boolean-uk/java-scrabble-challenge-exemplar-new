@@ -41,8 +41,25 @@ public class Scrabble {
 
     public int score() {
         int totalScore = 0;
+        int letterScore;
+        int multiplier = 1;
         for (char ch : this.word.toCharArray()) {
-            totalScore += getLetterScore(ch);
+            if (ch == '[') {
+                letterScore = 0;
+                multiplier = multiplier * 2;
+            } else if (ch == ']') {
+                letterScore = 0;
+                multiplier = multiplier / 2;
+            } else if (ch == '{') {
+                letterScore = 0;
+                multiplier = multiplier * 3;
+            } else if (ch == '}') {
+                letterScore = 0;
+                multiplier = multiplier / 3;
+            } else {
+                letterScore = getLetterScore(ch) * multiplier;
+            }
+            totalScore += letterScore;
         }
         return totalScore;
     }
